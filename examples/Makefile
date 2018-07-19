@@ -34,6 +34,14 @@ SRC_FILES	= TwSimpleGLFW.c TwSimpleGLUT.c TwSimpleSDL.c TwAdvanced1.cpp TwString
 #first:	depend all
 first:  all
 
+glfw3:   Makefile TwTestGLFW3.cpp
+	@echo "===== Build TwTestGLFW3 ===="
+	$(CXX) $(CXXFLAGS) $(INCPATH) TwTestGLFW3.cpp $(LFLAGS) -lglfw $(LIBS) -o $(OUT_DIR)/TwTestGLFW3.out
+	@echo $(EXP_SH) > $(OUT_DIR)/TwTestGLFW3
+	@echo $(EXP_PATH) >> $(OUT_DIR)/TwTestGLFW3
+	@chmod +x $(OUT_DIR)/TwTestGLFW3
+	@echo "To execute the example, run " $(OUT_DIR)/TwTestGLFW3
+
 all: 	Makefile $(SRC_FILES)
 
 	@echo "===== Build TwSimpleGLUT ===="
@@ -93,7 +101,6 @@ clean:
 	-$(DEL_FILE) debug64/*
 	-$(DEL_DIR) debug64
 
-	
 ####### DEPENDENCIES
 
 TwSimpleGLFW.o: ../include/AntTweakBar.h
